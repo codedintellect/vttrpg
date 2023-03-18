@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <form action="POST">
+            <div class="form-title">WELCOME BACK!</div>
+            <label for="email">Email</label>
+            <input name="email" title="Email" type="email"/>
+            <div>
+                <label for="password">Password</label>
+                <a class="form-forgot-pass">Forgot password</a>
+            </div>
+            <input name="password" title="Password" type="password"/>
+            <label>Remember me<input name="rememberMe" title="Remember me" type="checkbox" /></label>
+            <input class="form-enter" type="submit" value="ENTER"/>
+            <div class="login-with">
+                <div class="login-with-title">Or login with</div>
+                <div class="login-with-buttons"></div>
+            </div>
+        </form>
+    </body>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #002daa;
+        }
+
+        .form-title{
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+        }
+
+        form{
+            font-size: 28px;
+            position: absolute;
+            width: 500px;
+            height: 420px;
+            background: #0044ff;
+            border-radius: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label{
+            color: white;
+            text-align: left;
+            margin: 16px 0px 4px 0;
+            display: inline-block;
+        }
+
+        input{
+            border: none;
+            border-radius: 16px;
+        }
+
+        input[type="email"], input[type="password"]{
+            font-size: 32px;
+            text-align: center;
+        }
+
+        input[type="checkbox"]{
+            width: 24px;
+            height: 24px;
+            margin: 0 0 0 12px;
+        }
+
+        .form-enter{
+            font-size: 24px;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+
+        .form-enter:hover{
+            filter: brightness(0.85);
+        }
+
+        .form-enter:active{
+            filter: brightness(0.7);
+        }
+
+        .form-forgot-pass{
+            float: right;
+            text-decoration: underline;
+            color: white;
+            margin: 16px 0px 4px 0;
+            cursor: pointer;
+        }
+
+        .form-forgot-pass:hover{
+            filter: brightness(0.85);
+        }
+
+        .form-forgot-pass:active{
+            filter: brightness(0.7);
+        }
+
+        .login-with{
+            background: #0038d2;
+            width: 100%;
+            min-height: 60px;
+            border-radius: 24px;
+            margin: 16px 0;
+        }
+
+        .login-with-title{
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            margin: 4px 0;
+        }
+
+        .login-with-buttons{
+            display: inline-block;
+        }
+    </style>
+</html>
