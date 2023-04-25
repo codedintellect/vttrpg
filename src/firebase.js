@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -19,15 +22,21 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 if (auth.currentUser == null) {
-    signInWithEmailAndPassword(auth, "test@example.com", "unsecure")
-      .then((userCredential) => {
-          console.log(userCredential.user);
-      })
-      .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-      });
+  setPersistence(auth, browserLocalPersistence)
+    .then(() => {
+      return signInWithEmailAndPassword(auth, "test@example.com", "unsecure");
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
 }
 else {
-    $(".register-prompt").remove();
+  $(".register-prompt").remove();
 }
+
+onAuthStateChanged(auth, user => {
+  console.log(user);
+});
+  
