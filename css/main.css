@@ -1,6 +1,6 @@
 :root {
     --border-width: 6px;
-    --round: 20px;
+    --border-radius: 20px;
 }
 
 body {
