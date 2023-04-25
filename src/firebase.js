@@ -21,22 +21,23 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 
-if (auth.currentUser == null) {
-  setPersistence(auth, browserLocalPersistence)
-    .then(() => {
-      return signInWithEmailAndPassword(auth, "test@example.com", "unsecure");
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-}
-else {
-  $(".register-prompt").remove();
-}
-
 onAuthStateChanged(auth, user => {
   console.log(user);
+  if (user != null) {
+    $(".register-prompt").remove();
+  }
 });
-  
+
+function emailLogin() {
+  setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    return signInWithEmailAndPassword(auth, "test@example.com", "unsecure");
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+}
+
+window.emailLogin = emailLogin;
