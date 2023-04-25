@@ -8,3 +8,38 @@
 
     border-left: var(--border-width) solid var(--nord2);
 }
+
+.register-prompt {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 320px;
+    background-color: var(--nord1);
+}
+
+.register-prompt > * {
+    text-align: center;
+}
+
+.two-options {
+    margin-top: 16px;
+}
+
+.two-options > button {
+    border-style: solid;
+    border-color: var(--nord9);
+    border-radius: 8px;
+    color: var(--nord6);
+    font-size: 20px;
+}
+
+.signup-btn {
+    background-color: var(--nord10);
+}
+
+.signin-btn {
+    background-color: var(--nord2);
+}
