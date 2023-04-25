@@ -5,7 +5,8 @@ import {
   browserLocalPersistence,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -40,4 +41,9 @@ function emailLogin() {
   });
 }
 
+function logout() {
+  signOut(auth);
+}
+
 window.emailLogin = emailLogin;
+window.logout = logout;
