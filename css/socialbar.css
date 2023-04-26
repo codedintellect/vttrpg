@@ -24,20 +24,76 @@
     text-align: center;
 }
 
+.register-prompt > label {
+    margin-bottom: 16px;
+    padding: 4px 0px;
+    border: var(--nord4) 3px;
+    border-bottom-style: solid;
+    position:relative;
+    display:inline-block;
+}
+
+.register-prompt > label > span {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity: 0.5;
+
+    font-size: 18px;
+}
+
+.register-prompt > label > input {
+    border-style: none;
+    background-color: #0000;
+    color: var(--nord6);
+    font-size: 18px;
+    width: 240px;
+}
+
+.register-prompt > label > input:focus {
+    outline: none;
+}
+
+input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    font-weight: 800;
+    font-size: 12px;
+    border: none;
+    transform: translateY(-80%);
+}
+
 .two-options {
-    margin-top: 16px;
+    width: 200px;
+    height: 40px;
+    border: 3px solid var(--nord8);
 }
 
 .two-options > button {
-    border-style: solid;
-    border-color: var(--nord9);
-    border-radius: 8px;
+    border-style: none;
     color: var(--nord6);
     font-size: 20px;
+    font-weight: 700;
+    text-shadow: 2px 1px 0px var(--nord9);
+    height: 100%;
+    width: 50%;
+    margin: 0;
+}
+
+.two-options > button:hover {
+    font-weight: 900;
+}
+
+.two-options > button:active {
+    color: #0000;
+    text-shadow: 2px 1px 0px var(--nord5);
 }
 
 .signup-btn {
-    background-color: var(--nord10);
+    background-color: var(--nord8);
 }
 
 .signin-btn {

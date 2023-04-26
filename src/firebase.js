@@ -21,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
+setPersistence(auth, browserLocalPersistence);
 
 onAuthStateChanged(auth, user => {
   console.log(user);
@@ -29,21 +30,22 @@ onAuthStateChanged(auth, user => {
   }
 });
 
+function emailSignUp() {
+  createUserWithEmailAndPassword(auth, $("#social-email").val(), $("#social-password").val())
+    .catch((error) => {
+      $(".two-options").css("border", "3px solid var(--nord11)");
+      $(".two-options").css("transition", "0.5s");
+    });
+}
+
 function emailLogin() {
-  setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    return signInWithEmailAndPassword(auth, "test@example.com", "unsecure");
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  signInWithEmailAndPassword(auth, $("#social-email").val(), $("#social-password").val());
 }
 
 function logout() {
   signOut(auth);
 }
 
+window.emailSignUp = emailSignUp;
 window.emailLogin = emailLogin;
 window.logout = logout;
