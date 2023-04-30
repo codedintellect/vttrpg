@@ -4,7 +4,8 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
-        firebase: './src/firebase.js'
+        firebase: './src/firebase.js',
+        include: './src/include.js'
     },
     output: {
         filename: '[name].js',

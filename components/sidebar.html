@@ -1,0 +1,86 @@
+<div class="side-indent">
+    <div class="side-indent-right"></div>
+    <div class="side-indent-left"></div>
+    <div class="side-content">
+        
+    </div>
+</div>
+<style>
+    .side-indent {
+        --width: 80px;
+        --angle: 22deg;
+        position: absolute;
+        right: 0;
+        top: 80px;
+        width: var(--width);
+        height: 400px;
+    }
+
+    .side-indent-right {
+        background: var(--nord0);
+        overflow: hidden;
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        right: 0;
+    }
+
+    .side-indent-right::before, .side-indent-right::after {
+        content: '';
+        position: absolute;
+        left: calc(var(--width) / -2);
+        width: 100vh;
+        height: calc(var(--width) - var(--border-width) * 2);
+        background: var(--nord1);
+        transform-origin: calc(var(--width) / 2) 50%;
+        border-radius: var(--width) 0 0 var(--width);
+        border: var(--border-width) solid var(--nord2);
+    }
+
+    .side-indent-right::before {
+        transform: translate(0, -50%) rotate(calc(180deg - var(--angle)));
+    }
+
+    .side-indent-right::after {
+        bottom: 0;
+        transform: translate(0, 50%) rotate(calc(180deg + var(--angle)));
+    }
+
+    .side-indent-left {
+        position: absolute;
+        overflow: hidden;
+        height: 100%;
+        width: 50%;
+    }
+
+    .side-indent-left::before, .side-indent-left::after {
+        content: '';
+        position: absolute;
+        width: 100vh;
+        height: calc(var(--width) - var(--border-width) * 2);
+        transform-origin: calc(var(--width) / 2) 50%;
+        background: var(--nord0);
+        border-radius: var(--width) 0 0 var(--width);
+        border: var(--border-width) solid var(--nord2);
+    }
+
+    .side-indent-left::before {
+        top: calc((var(--width) - var(--border-width)) / cos(var(--angle)));
+        transform: translate(0, -50%) rotate(calc(0deg - var(--angle)));
+    }
+
+    .side-indent-left::after {
+        bottom: calc((var(--width) - var(--border-width)) / cos(var(--angle)));
+        transform: translate(0, 50%) rotate(var(--angle));
+    }
+
+    .side-content {
+        background: var(--nord0);
+        position: absolute;
+        transform: translate(0%, -50%);
+        top: 50%;
+        width: 100%;
+        height: calc(100% - 2 * (var(--width) - var(--border-width)) / cos(var(--angle)));
+        box-shadow: inset var(--border-width) 0 var(--nord2);
+    }
+</style>

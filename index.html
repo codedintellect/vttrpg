@@ -2,41 +2,12 @@
 <html>
     <head>
         <title>Main - VTTRPG</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass Mono">
-        <link rel="stylesheet" href="css/nord.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/sidebar.css">
-        <link rel="stylesheet" href="css/socialbar.css">
-        <script src="js/templating.js"></script>
+        <script src="js/firebase.js"></script>
     </head>
     <body>
-        <div class="side-bar">
-            <div class="side-indent">
-                <div class="side-indent-right"></div>
-                <div class="side-indent-left"></div>
-                <div class="side-content">
-                    
-                </div>
-            </div>
-        </div>
-        <div class="social-bar">
-            <div class="register-prompt logged-out">
-                <img src="assets/question-mark.png" width="240" />
-                <h2>DO I KNOW YOU?</h2>
-                <label>
-                    <input id="social-email" type="email" placeholder=" ">
-                    <span>EMAIL</span>
-                </label>
-                <label>
-                    <input id="social-password" type="password" placeholder=" ">
-                    <span>PASSWORD</span>
-                </label>
-                <div class="two-options">
-                    <button onclick="window.emailSignUp()" class="signup-btn">SIGN UP</button><button onclick="window.emailLogin()" class="signin-btn">SIGN IN</button>
-                </div>
-                <span style="margin-top: 12px;">TO PLAY WITH FRIENDS</span>
-            </div>
-        </div>
+        <div class="side-bar" include-html="components/sidebar.html"></div>
+        <div class="social-bar"></div>
     </body>
-    <script src="js/firebase.js"></script>
+    <script src="js/include.js"></script>
 </html>

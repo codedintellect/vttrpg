@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  setPersistence,
-  browserLocalPersistence,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -20,32 +18,30 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth();
-setPersistence(auth, browserLocalPersistence);
+const auth = getAuth(app);
 
-onAuthStateChanged(auth, user => {
-  console.log(user);
-  if (user != null) {
-    $(".register-prompt").remove();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    console.log(user);
+  } else {
+    console.log("out");
   }
 });
 
-function emailSignUp() {
-  createUserWithEmailAndPassword(auth, $("#social-email").val(), $("#social-password").val())
+function _signIn(email, pass) {
+  signInWithEmailAndPassword(auth, email, pass)
     .catch((error) => {
-      $(".two-options").css("border", "3px solid var(--nord11)");
-      $(".two-options").css("transition", "0.5s");
+      const errorCode = error.code;
+      const errorMessage = error.message;
     });
 }
 
-function emailLogin() {
-  signInWithEmailAndPassword(auth, $("#social-email").val(), $("#social-password").val());
+function _signOut() {
+  signOut(auth).catch((error) => {
+    // An error happened.
+  });
 }
 
-function logout() {
-  signOut(auth);
-}
-
-window.emailSignUp = emailSignUp;
-window.emailLogin = emailLogin;
-window.logout = logout;
+window["signIn"] = _signIn;
+window["signOut"] = _signOut;
