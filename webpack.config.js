@@ -4,6 +4,7 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
+        eccs: './src/ecss.js',
         firebase: './src/firebase.js',
         include: './src/include.js'
     },

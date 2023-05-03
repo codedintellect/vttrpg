@@ -16,7 +16,6 @@ const firebaseConfig = {
   appId: "1:427810831569:web:aa00bd4532f8cfb0c319f0"
 };
 
-const avatarCSS = ".avatar { background-image: url({url}); }";
 const avatarURL = "https://firebasestorage.googleapis.com/v0/b/virt-table.appspot.com/o/a%2F{file}?alt=media";
 
 const app = initializeApp(firebaseConfig);
@@ -24,9 +23,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 function loadAvatar(photoURL) {
-  const a = document.querySelector(".avatar-style");
   photoURL ??= avatarURL.replace("{file}", "_null.jpg");
-  a.innerHTML = avatarCSS.replace("{url}", photoURL);
+  window["eCSS"](".avatar", "background-image", `url("${photoURL}")`);
 }
 
 onAuthStateChanged(auth, (user) => {
