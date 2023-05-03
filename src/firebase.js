@@ -16,25 +16,36 @@ const firebaseConfig = {
   appId: "1:427810831569:web:aa00bd4532f8cfb0c319f0"
 };
 
+const avatarCSS = ".avatar { background-image: url({url}); }";
+const avatarURL = "https://firebasestorage.googleapis.com/v0/b/virt-table.appspot.com/o/a%2F{file}?alt=media";
+
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
+function loadAvatar(photoURL) {
+  const a = document.querySelector(".avatar-style");
+  photoURL ??= avatarURL.replace("{file}", "_null.jpg");
+  a.innerHTML = avatarCSS.replace("{url}", photoURL);
+}
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
-    console.log(user);
+    window["firebaseUID"] = uid;
+
+    loadAvatar(user.photoURL);
   } else {
-    console.log("out");
+    window["firebaseUID"] = null;
+    loadAvatar(null);
   }
 });
 
 function _signIn(email, pass) {
-  signInWithEmailAndPassword(auth, email, pass)
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+  signInWithEmailAndPassword(auth, email, pass).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 }
 
 function _signOut() {

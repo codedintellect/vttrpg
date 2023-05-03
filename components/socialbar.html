@@ -1,0 +1,46 @@
+<div class="social-center">
+  <div class="account-control">
+    <div class="avatar acc-con-img"><div>
+  </div>
+</div>
+
+<style>
+  .social-center {
+    --p: 10px;
+    position: absolute;
+    bottom: var(--p);
+    height: 160px;
+    width: calc(100% - var(--p) * 2);
+    right: var(--p);
+
+    background-color: var(--nord10);
+
+    border-radius: var(--border-radius);
+
+    box-shadow: 4px 4px var(--nord2);
+
+    overflow: hidden;
+  }
+
+  .account-control {
+    position: absolute;
+    height: 64px;
+    width: 100%;
+    bottom: 0;
+
+    border-radius: inherit;
+    background-color: var(--nord9);
+
+    box-shadow: 0 -6px 6px rgba(0,0,0,0.14);
+  }
+
+  .acc-con-img {
+    position: absolute;
+    border-radius: calc(var(--border-radius) - 4px);
+    background-size: 56px;
+    height: 56px;
+    width: 56px;
+    margin: 4px;
+    bottom: 0;
+  }
+</style>
