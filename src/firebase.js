@@ -16,10 +16,6 @@ const firebaseConfig = {
   appId: "1:427810831569:web:aa00bd4532f8cfb0c319f0"
 };
 
-Array.prototype.random = function () {
-  return this[Math.floor((Math.random()*this.length))];
-}
-
 const avatarURL = "https://firebasestorage.googleapis.com/v0/b/virt-table.appspot.com/o/a%2F{file}?alt=media";
 
 const app = initializeApp(firebaseConfig);
