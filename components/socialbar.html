@@ -6,10 +6,19 @@
       <div class="tag acc-con-tag"></div>
     </div>
   </div>
-  <div class="acc-con-reg">
-    <div class="reg-title">Welcome back!</div>
-    <input class="email reg-input" type="email" placeholder="EMAIL"/>
-    <input class="pass reg-input" type="password" placeholder="PASSWORD"/>
+  <div class="reg">
+    <h1>Welcome!</h1>
+    <input placeholder="EMAIL" type="email" oninput="(async () => {
+      let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
+      let b = await window.checkEmail(this.value);
+      e[!b%2].removeAttribute('disabled');
+      e[b%2].setAttribute('disabled', null);
+    })()" />
+    <input placeholder="PASSWORD" type="password" />
+    <div class="reg-options">
+      <button secondary disabled id="login-btn">LOGIN</button><!--
+      --><button secondary id="reg-btn">REGISTER</button>
+    </div>
   </div>
 </div>
 
@@ -17,7 +26,7 @@
   .social-center {
     position: absolute;
     margin: 10px;
-    height: 256px;
+    height: 220px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -79,13 +88,43 @@
     color: var(--nord4);
   }
 
-  .acc-con-reg {
-    padding: 24px 16px;
+  .reg {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  .reg-title {
-    font-weight: 900;
-    font-size: 28px;
+  .reg > * {
+    position: relative;
+    margin: 4px 14px;
+    width: auto;
+    right: 0;
+    left: 0;
+  }
+
+  .reg > h1 {
     margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .reg-options {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .reg-options > * {
+    flex: 1;
+  }
+
+  #login-btn {
+    margin-right: 4px;
+  }
+
+  #reg-btn {
+    margin-left: 4px;
   }
 </style>

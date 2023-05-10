@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   onAuthStateChanged,
+  fetchSignInMethodsForEmail,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut
@@ -44,6 +45,14 @@ function generateName() {
   let n = noun + num;
 }
 
+async function _checkEmail(email) {
+  if (!String(email).toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    return false;
+  }
+  const methods = await fetchSignInMethodsForEmail(auth, email);
+  return methods.length > 0;
+}
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log(user)
@@ -79,3 +88,4 @@ function _signOut() {
 
 window["signIn"] = _signIn;
 window["signOut"] = _signOut;
+window["checkEmail"] = _checkEmail;
