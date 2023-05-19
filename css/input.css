@@ -1,6 +1,5 @@
-input {
+input, button {
   background-color: var(--nord0);
-  margin: 4px 0;
   padding: 4px;
   border-radius: 4px;
   border: 3px solid var(--nord3);
@@ -14,62 +13,24 @@ input {
   transition: 0.1s;
 }
 
-input:focus {
+input {
+  margin: 4px 0;
+  transition: 0.1s;
+}
+
+input:focus, button:not([disabled]):hover {
   outline-width: 3px;
 }
 
-.comment {
-  font-weight: 900;
-  font-size: 12px;
-}
-
-button[primary] {
-  background-color: var(--nord0);
-  padding: 4px;
-  border-radius: 4px;
-  border: 3px solid var(--nord8);
-  outline-offset: 2px;
-  outline: 0 solid var(--nord4);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  color: var(--nord6);
-  transition: 0.06s;
-}
-
-button[secondary] {
-  background-color: var(--nord0);
-  padding: 4px;
-  border-radius: 4px;
-  border: 3px solid var(--nord3);
-  outline-offset: 2px;
-  outline: 0 solid var(--nord4);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  color: var(--nord6);
+button {
   transition: 0.06s;
 }
 
 button[disabled] {
   background-color: var(--nord1);
-  padding: 4px;
-  border-radius: 4px;
-  border: 3px solid var(--nord3);
-  outline-offset: 2px;
-  outline: 0 solid var(--nord4);
-
-  font-size: 18px;
-  font-weight: 700;
-
+  border-color: var(--nord3);
   color: var(--nord3);
   transition: 0.3s;
-}
-
-button:not([disabled]):hover {
-  outline-width: 3px;
 }
 
 button:not([disabled]):active {
