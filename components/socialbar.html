@@ -1,23 +1,28 @@
 <div class="social-center">
+  <div class="reg">
+    <h1>Welcome!</h1>
+    <input placeholder="EMAIL" type="email" oninput="(async () => {
+      // Get elements with ids from array
+      let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
+      // Check if email has account linked to it
+      let b = await window.checkEmail(this.value);
+      // If email exists disable element 1 from array (reg-btn) and enable 0.
+      // Else disable element 0 from array (login-btn) and enable 1.
+      e[b%2].setAttribute('disabled', null);
+      e[!b%2].removeAttribute('disabled');
+    })() // This weird bracket thing is to execute lambda immediately" />
+    <input placeholder="PASSWORD" type="password" />
+    <div class="reg-options">
+      <button secondary disabled id="login-btn">LOGIN</button><!--
+        This comment is to avoid a whitespace gap between the buttons
+      --><button secondary id="reg-btn">REGISTER</button>
+    </div>
+  </div>
   <div class="account-control" style="display: none;">
     <div class="acc-con-main">
       <div class="avatar acc-con-img"></div>
       <div class="name acc-con-name"></div>
       <div class="tag acc-con-tag"></div>
-    </div>
-  </div>
-  <div class="reg">
-    <h1>Welcome!</h1>
-    <input placeholder="EMAIL" type="email" oninput="(async () => {
-      let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
-      let b = await window.checkEmail(this.value);
-      e[!b%2].removeAttribute('disabled');
-      e[b%2].setAttribute('disabled', null);
-    })()" />
-    <input placeholder="PASSWORD" type="password" />
-    <div class="reg-options">
-      <button secondary disabled id="login-btn">LOGIN</button><!--
-      --><button secondary id="reg-btn">REGISTER</button>
     </div>
   </div>
 </div>
@@ -26,7 +31,6 @@
   .social-center {
     position: absolute;
     margin: 10px;
-    height: 220px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -41,7 +45,7 @@
   }
 
   .account-control {
-    position: absolute;
+    position: relative;
     height: 64px;
     width: 100%;
     bottom: 0;
@@ -89,42 +93,33 @@
   }
 
   .reg {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .reg > * {
-    position: relative;
-    margin: 4px 14px;
+    row-gap: 8px;
+    margin: 14px;
     width: auto;
+    bottom: 0;
     right: 0;
     left: 0;
   }
 
+  .reg > * {
+    width: auto;
+    margin: 0;
+  }
+
   .reg > h1 {
-    margin-bottom: 8px;
     text-align: center;
   }
 
   .reg-options {
     display: flex;
     align-items: stretch;
+    column-gap: 8px;
   }
 
   .reg-options > * {
     flex: 1;
-  }
-
-  #login-btn {
-    margin-right: 4px;
-  }
-
-  #reg-btn {
-    margin-left: 4px;
   }
 </style>
