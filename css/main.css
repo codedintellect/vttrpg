@@ -22,6 +22,10 @@
   --nord15: #b48ead;
 }
 
+:root[hidden] {
+  display: none;
+}
+
 ::selection {
   background-color: var(--nord10);
 }
