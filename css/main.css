@@ -37,24 +37,3 @@ body {
   font-family: "Comfortaa";
   color: var(--nord6);
 }
-
-.side-bar {
-  position: fixed;
-  height: 100%;
-  width: 100px;
-
-  background: var(--nord1);
-
-  box-shadow: inset calc(0px - var(--border-width)) 0 var(--nord2);
-}
-
-.social-bar {
-  position: fixed;
-  height: 100%;
-  width: 320px;
-  right: 0;
-
-  background-color: var(--nord1);
-
-  border-left: var(--border-width) solid var(--nord2);
-}
