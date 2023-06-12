@@ -1,28 +1,31 @@
 <div class="social-center">
-  <div class="reg">
-    <h1>Welcome!</h1>
-    <input placeholder="EMAIL" type="email" oninput="(async () => {
-      // Get elements with ids from array
-      let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
-      // Check if email has account linked to it
-      let b = await window.checkEmail(this.value);
-      // If email exists disable element 1 from array (reg-btn) and enable 0.
-      // Else disable element 0 from array (login-btn) and enable 1.
-      e[b%2].setAttribute('disabled', null);
-      e[!b%2].removeAttribute('disabled');
-    })() // This weird bracket thing is to execute lambda immediately" />
-    <input placeholder="PASSWORD" type="password" />
-    <div class="reg-options">
-      <button secondary disabled id="login-btn">LOGIN</button><!--
-        This comment is to avoid a whitespace gap between the buttons
-      --><button secondary id="reg-btn">REGISTER</button>
+  <div class="social-notif">
+    <div class="error">
+      ERROR</br>ERROR</br>ERROR
+    </div>
+    <div class="error">
+      ERROR</br>ERROR</br>ERROR
     </div>
   </div>
-  <div class="account-control" style="display: none;">
-    <div class="acc-con-main">
-      <div class="avatar acc-con-img"></div>
-      <div class="name acc-con-name"></div>
-      <div class="tag acc-con-tag"></div>
+  <div class="account-control">
+    <div class="reg">
+      <h1>Welcome!</h1>
+      <input placeholder="EMAIL" type="email" oninput="(async () => {
+        // Get elements with ids from array
+        let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
+        // Check if email has account linked to it
+        let b = await window.checkEmail(this.value);
+        // If email exists disable element 1 from array (reg-btn) and enable 0.
+        // Else disable element 0 from array (login-btn) and enable 1.
+        e[b%2].setAttribute('disabled', null);
+        e[!b%2].removeAttribute('disabled');
+      })() // This weird bracket thing is to execute lambda immediately" />
+      <input placeholder="PASSWORD" type="password" />
+      <div class="reg-options">
+        <button secondary disabled id="login-btn">LOGIN</button><!--
+          This comment is to avoid a whitespace gap between the buttons
+        --><button secondary id="reg-btn">REGISTER</button>
+      </div>
     </div>
   </div>
 </div>
@@ -35,22 +38,25 @@
     left: 0;
     right: 0;
 
-    background-color: var(--nord10);
+    /* background-color: var(--nord0); */
+    background-color: var(--nord11);
 
     border-radius: var(--border-radius);
 
-    box-shadow: 4px 4px var(--nord2);
+    box-shadow: 4px 4px var(--nord0);
+
+    outline: solid 2px var(--nord2);
+    outline-offset: -2px;
 
     overflow: hidden;
   }
 
   .account-control {
     position: relative;
-    height: 64px;
+    height: auto;
     width: 100%;
-    bottom: 0;
 
-    background-color: var(--nord9);
+    background-color: var(--nord2);
 
     border-radius: inherit;
 
@@ -59,38 +65,9 @@
     overflow: hidden;
   }
 
-  .acc-con-img {
-    position: absolute;
-    height: 56px;
-    margin: 4px;
-
-    aspect-ratio: 1/1;
-
-    background-size: contain;
-
-    border-radius: calc(var(--border-radius) - 4px);
-  }
-
-  .acc-con-name {
-    position: absolute;
-    left: 64px;
-    top: 35px;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    transform: translate(0, -100%);
-  }
-
-  .acc-con-tag {
-    position: absolute;
-    left: 64px;
-    top: 35px;
-
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--nord4);
-  }
+    /*-------------------------*/
+   /*    REGISTRATION MENU    */
+  /*-------------------------*/
 
   .reg {
     position: relative;
@@ -121,5 +98,27 @@
 
   .reg-options > * {
     flex: 1;
+  }
+
+    /*-------------------------*/
+   /*    NOTIFICATION MENU    */
+  /*-------------------------*/
+
+  .social-notif {
+    max-height: 600px;
+    height: auto;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    row-gap: 8px;
+
+    margin: 0 14px;
+
+    overflow: hidden;
+
+    transition: 0.7s;
   }
 </style>
