@@ -1,96 +1,90 @@
 <div class="side-indent">
-  <div class="side-indent-right"></div>
-  <div class="side-indent-left"></div>
-  <div class="side-content">
-        
-  </div>
+  <div class="indent-right"></div>
+  <div class="indent-left"></div>
 </div>
+
 <style>
   .side-bar {
     position: fixed;
     height: 100%;
     width: 100px;
 
-    background: var(--nord1);
+    /*background: var(--nord1);*/
 
-    box-shadow: inset calc(0px - var(--border-width)) 0 var(--nord2);
+    box-shadow: inset calc(0px - var(--bwidth)) 0 var(--nord2);
   }
   
   .side-indent {
     --width: 80px;
     --angle: 22deg;
+    
+    --middle-radius: calc((var(--width) - var(--bwidth)) / 2);
+    --inner-radius: calc(var(--middle-radius) - var(--bwidth) / 2);
+    --outer-radius: calc(var(--middle-radius) + var(--bwidth) / 2);
+    --gap: calc(2 * var(--middle-radius) * (1 / cos(var(--angle)) - 1));
+
     position: absolute;
     right: 0;
     top: 80px;
-    width: var(--width);
+    width: 100%;
     height: 400px;
   }
 
-  .side-indent-right {
-    background: var(--nord0);
-    overflow: hidden;
+  .indent-left {
     position: absolute;
+    width: 100%;
     height: 100%;
-    width: 50%;
-    right: 0;
   }
 
-  .side-indent-right::before, .side-indent-right::after {
+  .indent-left::before {
     content: '';
     position: absolute;
-    left: calc(var(--width) / -2);
-    width: 100vh;
-    height: calc(var(--width) - var(--border-width) * 2);
-    background: var(--nord1);
-    transform-origin: calc(var(--width) / 2) 50%;
-    border-radius: var(--width) 0 0 var(--width);
-    border: var(--border-width) solid var(--nord2);
+    transform: translateY(-50%);
+    top: 50%;
+    left: calc(100% - var(--width) + var(--bwidth));
+    width: calc(var(--width) - 2 * var(--bwidth)); 
+    height: calc(100% - var(--bwidth) - 2 * var(--gap));
+    
+    --x-crop: calc(50% + var(--inner-radius) * sin(var(--angle)));
+
+    border-radius: calc(var(--width) / 2);
+    outline: solid var(--bwidth) var(--nord2);
+    box-shadow: 0px 0px 0px 100px var(--nord1);
+    clip-path:
+      inset(var(---bwidth) var(--x-crop) var(---bwidth) -100px);
   }
 
-  .side-indent-right::before {
-    transform: translate(0, -50%) rotate(calc(180deg - var(--angle)));
-  }
-
-  .side-indent-right::after {
-    bottom: 0;
-    transform: translate(0, 50%) rotate(calc(180deg + var(--angle)));
-  }
-
-  .side-indent-left {
+  .indent-right {
     position: absolute;
-    overflow: hidden;
-    height: 100%;
-    width: 50%;
-  }
-
-  .side-indent-left::before, .side-indent-left::after {
-    content: '';
-    position: absolute;
-    width: 100vh;
-    height: calc(var(--width) - var(--border-width) * 2);
-    transform-origin: calc(var(--width) / 2) 50%;
-    background: var(--nord0);
-    border-radius: var(--width) 0 0 var(--width);
-    border: var(--border-width) solid var(--nord2);
-  }
-
-  .side-indent-left::before {
-    top: calc((var(--width) - var(--border-width)) / cos(var(--angle)));
-    transform: translate(0, -50%) rotate(calc(0deg - var(--angle)));
-  }
-
-  .side-indent-left::after {
-    bottom: calc((var(--width) - var(--border-width)) / cos(var(--angle)));
-    transform: translate(0, 50%) rotate(var(--angle));
-  }
-
-  .side-content {
-    background: var(--nord0);
-    position: absolute;
-    transform: translate(0%, -50%);
+    transform: translateY(-50%);
     top: 50%;
     width: 100%;
-    height: calc(100% - 2 * (var(--width) - var(--border-width)) / cos(var(--angle)));
-    box-shadow: inset var(--border-width) 0 var(--nord2);
+    height: calc(100% + var(--width) - var(--bwidth));
+    overflow: hidden;
+  }
+
+  .indent-right::before, .indent-right::after {
+    content: '';
+    position: absolute;
+    transform-origin: calc(100% - var(--width) / 2) 50%;
+    
+    right: 0;
+
+    width: calc(4 * var(--width));
+    height: calc(var(--width) - var(--bwidth) * 2);
+
+    background-color: var(--nord1);
+    border: solid var(--bwidth) var(--nord2);
+
+    border-radius: var(--width);
+  }
+
+  .indent-right::before {
+    transform: translateY(-50%) rotate(calc(0deg - var(--angle)));
+  }
+
+  .indent-right::after {
+    top: 100%;
+    transform: translateY(-50%) rotate(var(--angle));
   }
 </style>

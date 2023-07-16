@@ -1,6 +1,7 @@
 :root {
-  --border-width: 6px;
-  --border-radius: 20px;
+  --bwidth: 6px;
+  ---bwidth: calc(0px - var(--bwidth));
+  --bradius: 20px;
 }
 
 :root {
@@ -31,7 +32,7 @@
 }
 
 body {
-  background: var(--nord0);
+  background: var(--nord11);
   margin: 0;
 
   font-family: "Comfortaa";
