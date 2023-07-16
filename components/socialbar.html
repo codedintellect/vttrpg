@@ -1,10 +1,10 @@
 <div class="social-center">
-  <div class="social-notif">
-    <div class="error">
-      ERROR</br>ERROR</br>ERROR
+  <div class="notif-center">
+    <div class="notif">
+      <div class="notif-message">MESSAGE</div>
     </div>
-    <div class="error">
-      ERROR</br>ERROR</br>ERROR
+    <div class="notif error">
+      <div class="notif-message">ERROR</div>
     </div>
   </div>
   <div class="account-control">
@@ -22,9 +22,8 @@
       })() // This weird bracket thing is to execute lambda immediately" />
       <input placeholder="PASSWORD" type="password" />
       <div class="reg-options">
-        <button secondary disabled id="login-btn">LOGIN</button><!--
-          This comment is to avoid a whitespace gap between the buttons
-        --><button secondary id="reg-btn">REGISTER</button>
+        <button secondary disabled id="login-btn">LOGIN</button>
+        <button secondary id="reg-btn">REGISTER</button>
       </div>
     </div>
   </div>
@@ -49,15 +48,9 @@
     left: 0;
     right: 0;
 
-    /* background-color: var(--nord0); */
-    background-color: var(--nord11);
-
     border-radius: var(--bradius);
 
     box-shadow: 4px 4px var(--nord0);
-
-    outline: solid 2px var(--nord2);
-    outline-offset: -2px;
 
     overflow: hidden;
   }
@@ -115,7 +108,7 @@
    /*    NOTIFICATION MENU    */
   /*-------------------------*/
 
-  .social-notif {
+  .notif-center {
     max-height: 600px;
     height: auto;
     right: 0;
@@ -124,12 +117,54 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    row-gap: 8px;
 
-    margin: 0 14px;
-
-    overflow: hidden;
+    margin-top: var(--bwidth);
 
     transition: 0.7s;
+  }
+
+  .notif-center::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% + 2 * var(--bradius));
+
+    border-radius: var(--bradius);
+    outline: solid var(--bwidth) var(--nord2);
+    outline-offset: var(---bwidth);
+  }
+
+  .notif {
+    position: relative;
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 0 14px;
+
+  }
+
+  .notif::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: calc(100% + var(--bradius));
+    background-color: var(--nord0);
+    border-radius: var(--bradius) var(--bradius) 0 0;
+
+    z-index: -1;
+  }
+
+  .notif.error::before {
+    background-color: var(--nord11);
+  }
+
+  .notif-message {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 0;
   }
 </style>
