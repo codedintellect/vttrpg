@@ -10,20 +10,17 @@
   <div class="account-control">
     <div class="reg">
       <h1>Welcome!</h1>
-      <input placeholder="EMAIL" type="email" oninput="(async () => {
-        // Get elements with ids from array
-        let e = Array.from(['login-btn','reg-btn'],x=>document.getElementById(x));
-        // Check if email has account linked to it
-        let b = await window.checkEmail(this.value);
-        // If email exists disable element 1 from array (reg-btn) and enable 0.
-        // Else disable element 0 from array (login-btn) and enable 1.
-        e[b%2].setAttribute('disabled', null);
-        e[!b%2].removeAttribute('disabled');
-      })() // This weird bracket thing is to execute lambda immediately" />
+      <input placeholder="EMAIL" type="email" />
       <input placeholder="PASSWORD" type="password" />
       <div class="reg-options">
-        <button secondary disabled id="login-btn">LOGIN</button>
+        <button secondary id="login-btn">LOGIN</button>
         <button secondary id="reg-btn">REGISTER</button>
+      </div>
+      <div class="separator"></div>
+      <div class="reg-options">
+        <button secondary id="discord-btn" onclick="oAuthSignIn('discord');"></button>
+        <button secondary id="reg-btn"></button>
+        <button secondary id="reg-btn"></button>
       </div>
     </div>
   </div>
@@ -102,6 +99,22 @@
 
   .reg-options > * {
     flex: 1;
+  }
+
+  .separator {
+    width: 100%;
+    height: 3px;
+    background-color: var(--nord4);
+
+    border-radius: 100vh;
+  }
+
+  #discord-btn {
+    height: 32px;
+    background-image: url("/assets/social/discord-mark-white.svg");
+    background-size: calc(100% - 10px) calc(100% - 10px);
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
     /*-------------------------*/
