@@ -2,6 +2,11 @@ const s = supabase.createClient('https://blunder.letz.dev/proxy', 'eyJhbGciOiJIU
 
 async function getLocalUser() {
   const { data: { user } } = await s.auth.getUser();
+  console.log(user);
+  if (!user) {
+    document.querySelector('.reg').classList.remove("hidden");
+  }
+  document.querySelector('.loading').classList.add("hidden");
   return user;
 }
 
@@ -21,3 +26,5 @@ async function oAuthSignIn(service) {
   });
   console.log(data, error);
 }
+
+getLocalUser();
