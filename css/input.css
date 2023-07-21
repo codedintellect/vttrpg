@@ -13,27 +13,22 @@ input, button {
   transition: 0.1s;
 }
 
-input {
-  margin: 4px 0;
-  transition: 0.1s;
-}
-
-input:focus, button:not([disabled]):hover {
+input:focus, input[type=button]:not([disabled]):hover {
   outline-width: 3px;
 }
 
-button {
+input[type=button] {
   transition: 0.06s;
 }
 
-button[disabled] {
+input[disabled] {
   background-color: var(--nord1);
   border-color: var(--nord3);
   color: var(--nord3);
   transition: 0.3s;
 }
 
-button:not([disabled]):active {
+input[type=button]:not([disabled]):active {
   outline-offset: 1px;
   color: var(--nord4);
 }

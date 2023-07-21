@@ -9,19 +9,24 @@
   </div>
   <div class="account-control">
     <div class="loading"></div>
+    <div class="user hidden">
+      <div class="avatar" value="invisible">
+        <div class="status"></div>
+      </div>
+    </div>
     <div class="reg hidden">
       <h1>Welcome!</h1>
       <input placeholder="EMAIL" type="email" />
       <input placeholder="PASSWORD" type="password" />
       <div class="reg-options">
-        <button secondary id="login-btn">LOGIN</button>
-        <button secondary id="reg-btn">REGISTER</button>
+        <input type="button" secondary id="login-btn" value="LOGIN" />
+        <input type="button" secondary id="reg-btn" value="REGISTER" />
       </div>
       <div class="separator"></div>
       <div class="reg-options">
-        <button secondary id="discord-btn" onclick="oAuthSignIn('discord');"></button>
-        <button secondary id="reg-btn"></button>
-        <button secondary id="reg-btn"></button>
+        <input type="button" secondary id="discord-btn" onclick="oAuthSignIn('discord');" />
+        <input type="button" secondary id="" />
+        <input type="button" secondary id="" />
       </div>
     </div>
   </div>
@@ -180,7 +185,6 @@
   }
 
   #discord-btn {
-    height: 32px;
     background-image: url("/assets/social/discord-mark-white.svg");
     background-size: calc(100% - 10px) calc(100% - 10px);
     background-repeat: no-repeat;
@@ -250,4 +254,68 @@
     box-sizing: border-box;
     padding: 6px 0;
   }
+
+    /*-------------------------*/
+   /*        USER MENU        */
+  /*-------------------------*/
+
+  .user {
+    position: absolute;
+    height: 70px;
+    width: 100%;
+    border: solid var(--bwidth) #0000;
+    bottom: 0;
+
+    box-sizing: border-box;
+  }
+
+  .user > .avatar {
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: var(--nord9);
+    background-size: 100%;
+    --pfp-bradius: calc(var(--bradius) - var(--bwidth));
+    border-radius: var(--pfp-bradius);
+  }
+
+  .user > .avatar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+
+    --cutoff-angle: 4deg;
+
+    height: calc((100% - var(--pfp-bradius) * 2) / cos(var(--cutoff-angle)) + var(--pfp-bradius) * 2);
+    width: calc(var(--pfp-bradius) * 2);
+    transform-origin: var(--pfp-bradius) var(--pfp-bradius);
+    transform: rotate(var(--cutoff-angle));
+
+    border-radius: var(--pfp-bradius);
+
+    box-shadow: 0 0 0 100px var(--nord2);
+    clip-path: inset(0 -50% 0 50%);
+  }
+
+  .avatar > .status {
+    position: absolute;
+    height: calc(var(--bwidth) * 2);
+    aspect-ratio: 1;
+    margin-bottom: calc(var(--bwidth) / 2);
+    bottom: 0;
+    right: 0;
+
+    border-radius: 100%;
+
+    z-index: 10;
+  }
+
+  .avatar[value] > .status {
+    outline: solid calc(var(--bwidth) / 2) var(--nord2);
+  }
+
+  .avatar[value="invisible"] > .status { background-color: var(--nord3); }
+  .avatar[value="online"]    > .status { background-color: var(--nord14); }
+  .avatar[value="away"]      > .status { background-color: var(--nord13); }
+  .avatar[value="dnd"]       > .status { background-color: var(--nord11); }
 </style>

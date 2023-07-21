@@ -3,17 +3,20 @@ const s = supabase.createClient('https://blunder.letz.dev/proxy', 'eyJhbGciOiJIU
 async function getLocalUser() {
   const { data: { user } } = await s.auth.getUser();
   console.log(user);
-  if (!user) {
+  if (user) {
+    window["eCSS"](".avatar", "background-image", `url(${user["user_metadata"]["avatar_url"]})`);
+    document.querySelector('.user').classList.remove("hidden");
+  } else {
     document.querySelector('.reg').classList.remove("hidden");
   }
   document.querySelector('.loading').classList.add("hidden");
   return user;
 }
 
-async function signUpWithEmail() {
+async function signUpWithEmail(_email, _password) {
   const { data, error } = await s.auth.signUp({
-    email: 'example@email.com',
-    password: 'example-password',
+    email: _email,
+    password: _password,
   });
   console.log(data, error);
 }
@@ -25,6 +28,10 @@ async function oAuthSignIn(service) {
     provider: service
   });
   console.log(data, error);
+}
+
+async function signOut() {
+  const { error } = await s.auth.signOut();
 }
 
 getLocalUser();

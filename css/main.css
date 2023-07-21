@@ -23,10 +23,6 @@
   --nord15: #b48ead;
 }
 
-:root[hidden] {
-  display: none;
-}
-
 ::selection {
   background-color: var(--nord10);
 }
@@ -38,3 +34,20 @@ body {
   font-family: "Comfortaa";
   color: var(--nord6);
 }
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+:root {
+  opacity: 1;
+  visibility: visible;
+}
+
+.context-menu {
+  position: fixed;
+  overflow: hidden;
+  border-radius: calc(var(--bradius) / 2);
+}
+
