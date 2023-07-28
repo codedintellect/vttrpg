@@ -31,7 +31,8 @@ async function checkUsername(username) {
   const { data, error } = await s
     .from('usernames')
     .select("username")
-    .eq('username', username);
+    .eq('username', username)
+    .neq('id', uuid);
   return data.length == 0;
 }
 
