@@ -1,1 +1,0 @@
-style=document.createElement("style"),document.currentScript.parentNode.insertBefore(style,document.currentScript),css={},window.eCSS=function(e,t,n){css[e]||(css[e]={}),css[e][t]=n,function(){var e="";for(const[t,n]of Object.entries(css)){e+=`${t} {\n`;for(const[t,c]of Object.entries(n))e+=`  ${t}: ${c};\n`;e+="}\n"}style.innerHTML=e}()};

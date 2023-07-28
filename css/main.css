@@ -1,6 +1,6 @@
 :root {
   --bwidth: 6px;
-  ---bwidth: calc(0px - var(--bwidth));
+  --bwidth-: calc(var(--bwidth) * -1);
   --bradius: 20px;
 }
 
@@ -51,3 +51,82 @@ body {
   border-radius: calc(var(--bradius) / 2);
 }
 
+.options {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding: 14px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.options > * {
+  width: auto;
+  margin: 0;
+  flex: 1 0 0;
+}
+
+.options > .wide {
+  flex-basis: 100%;
+}
+
+.group {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  outline-offset: 2px;
+  outline-width: 0px;
+
+  flex: 1 1 100%;
+}
+
+.group::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  outline-offset: inherit;
+  outline: 0 solid var(--nord4);
+  border-radius: 4px;
+  transition: 0.1s;
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+.group:focus-within::after {
+  outline-width: 3px;
+}
+
+.group > input {
+  width: 0;
+  flex: 1 1 auto;
+  outline: 2px solid var(--nord0) !important;
+  outline-offset: 0px;
+
+  z-index: 2;
+}
+
+.group > input ~ span {
+  padding-right: var(--bwidth);
+  padding-left: calc(var(--bwidth));
+  box-shadow: -3px 0 var(--nord3);
+}
+
+.group > span {
+  position: relative;
+  background-color: var(--nord3);
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  padding-left: var(--bwidth);
+  padding-right: calc(var(--bwidth));
+  box-shadow: 3px 0 var(--nord3);
+
+  font-weight: 1000;
+}

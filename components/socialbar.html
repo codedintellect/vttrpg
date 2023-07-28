@@ -1,11 +1,30 @@
 <div class="social-center">
-  <div class="notif-center">
-    <!--div class="notif">
+  <div class="social-center-popup notification-center">
+    <div class="notif">
       <div class="notif-message">MESSAGE</div>
     </div>
     <div class="notif error">
       <div class="notif-message">ERROR</div>
-    </div-->
+    </div>
+    <div class="notif">
+      <div class="notif-message">MESSAGE</div>
+    </div>
+  </div>
+  <div class="social-center-popup account-settings minimized">
+    <div class="options">
+      <span class="title">ACCOUNT</span>
+      <input placeholder="FIRST NAME" id="first-n" type="text" />
+      <input placeholder="LAST NAME" id="last-n" type="text" />
+      <div class="group">
+        <span>@</span>
+        <input placeholder="USERNAME" id="username" type="text" />
+      </div>
+      <div class="separator"></div>
+      <input type="button" value="SAVE" onclick="" />
+      <input type="button" value="SIGN OUT"
+        style="color: var(--nord11);" onclick="signOut();" />
+      <input type="button" value="MORE" class="wide" onclick="" />
+    </div>
   </div>
   <div class="account-control">
     <div class="loading"></div>
@@ -13,32 +32,31 @@
       <div class="avatar" value="invisible">
         <div class="status"></div>
       </div>
-      <div class="name">John D.</div>
-      <div class="tag">mystic0378</div>
-      <button class="settings">
+      <div class="name"></div>
+      <div class="tag"></div>
+      <button class="settings unfinished" onclick="toggle('.account-settings', 'minimized');">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
           <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
           <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
         </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" fill-opacity="0.2" class="bi bi-gear-fill" viewBox="0 0 16 16">
+          <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+        </svg>
       </button>
     </div>
-    <div class="reg hidden">
+    <div class="reg options hidden">
       <h1>Welcome!</h1>
       <input placeholder="EMAIL" type="email" />
       <input placeholder="PASSWORD" type="password" />
-      <div class="reg-options">
-        <input type="button" secondary id="login-btn" value="LOGIN" />
-        <input type="button" secondary id="reg-btn" value="REGISTER" />
-      </div>
+      <input type="button" secondary id="login-btn" value="LOGIN" />
+      <input type="button" secondary id="reg-btn" value="REGISTER" />
       <div class="separator"></div>
-      <div class="reg-options">
-        <input type="button" secondary id="discord-btn" onclick="oAuthSignIn('discord');" />
-        <input type="button" secondary id="" />
-        <input type="button" secondary id="" />
-      </div>
+      <input type="button" secondary id="discord-btn" onclick="oAuthSignIn('discord');" />
     </div>
   </div>
 </div>
+
+<script src="src/account-settings.js"></script>
 
 <style>
   .social-bar {
@@ -59,6 +77,7 @@
     left: 0;
     right: 0;
 
+    background-color: var(--nord0);
     border-radius: var(--bradius);
 
     box-shadow: 4px 4px var(--nord0);
@@ -118,16 +137,6 @@
     visibility: hidden;
   }
 
-  @keyframes bg-slide {
-    from {
-      background-position-y: 0px;
-    }
-
-    to {
-      background-position-y: -64px;
-    }
-  }
-
   .loading::after {
     content: 'LOADING';
     position: absolute;
@@ -140,54 +149,73 @@
     font-size: 48px;
   }
 
+  .social-center-popup {
+    position: relative;
+    max-height: 300px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background-color: inherit;
+    /* Cannot use border-radius, as it scales when radius is too big */
+    clip-path: inset(
+      0 0 calc(var(--bradius) * -1) 0
+      round var(--bradius) var(--bradius) 0 0
+    );
+
+    transition: 0.7s;
+  }
+
+  .social-center-popup::before {
+    content: '';
+    flex-shrink: 0;
+    height: var(--bwidth);
+    width: 100%;
+  }
+
+  .social-center-popup.minimized { max-height: 0px; }
+
+  /* Outline */
+  .social-center-popup::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% + 2 * var(--bradius));
+
+    border-radius: var(--bradius);
+    outline: solid var(--bwidth) var(--nord2);
+    outline-offset: var(--bwidth-);
+
+    pointer-events: none;
+  }
+
     /*-------------------------*/
    /*    REGISTRATION MENU    */
   /*-------------------------*/
 
   .reg {
-    position: relative;
     max-height: 600px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-    margin: 14px;
-    width: auto;
     bottom: 0;
-    right: 0;
-    left: 0;
 
     transition: 1s;
-    visibility: visible;
   }
 
   .reg.hidden {
     max-height: 0px;
-    visibility: hidden;
-  }
-
-  .reg > * {
-    width: auto;
-    margin: 0;
   }
 
   .reg > h1 {
     text-align: center;
   }
 
-  .reg-options {
-    display: flex;
-    align-items: stretch;
-    column-gap: 8px;
-  }
-
-  .reg-options > * {
-    flex: 1;
-  }
-
   .separator {
     width: 100%;
     height: 3px;
     background-color: var(--nord4);
+    flex-basis: 100%;
 
     border-radius: 100vh;
   }
@@ -202,33 +230,6 @@
     /*-------------------------*/
    /*    NOTIFICATION MENU    */
   /*-------------------------*/
-
-  .notif-center {
-    max-height: 600px;
-    height: auto;
-    right: 0;
-    left: 0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    margin-top: var(--bwidth);
-
-    transition: 0.7s;
-  }
-
-  .notif-center::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: calc(100% + 2 * var(--bradius));
-
-    border-radius: var(--bradius);
-    outline: solid var(--bwidth) var(--nord2);
-    outline-offset: var(---bwidth);
-  }
 
   .notif {
     position: relative;
@@ -247,8 +248,6 @@
     height: calc(100% + var(--bradius));
     background-color: var(--nord0);
     border-radius: var(--bradius) var(--bradius) 0 0;
-
-    z-index: -1;
   }
 
   .notif.error::before {
@@ -329,9 +328,8 @@
 
   .user > .settings {
     position: absolute;
-    transform: translateX(50%);
     padding: 0;
-    right: var(---bwidth);
+    right: -35px;
     height: 100%;
     aspect-ratio: 1;
     border: solid calc(var(--bwidth)) #0000;
@@ -340,17 +338,23 @@
     background-color: #00000007;
     background-repeat: no-repeat;
     outline: solid 0px #ebcb8bff;
+    opacity: 0.4;
 
-    animation: 2s infinite ease-out sonar;
+    color: var(--nord4);
+
     transition: 0.3s;
   }
 
-  .user > .settings:hover {
-    transform: translateX(0%);
+  .user > .settings.unfinished {
+    animation:
+      2s infinite ease-out sonar,
+      2s infinite ease-in-out gear;
   }
 
-  .user > .settings:hover > svg {
-    animation: 0.1s infinite linear spin;
+  .user > .settings:hover {
+    right: -25px;
+    opacity: 1;
+    animation: 0.5s infinite ease-in tick;
   }
 
   .user > .settings > svg {
@@ -359,8 +363,7 @@
     width: 100%;
     left: 0;
     top: 0;
-    color: var(--nord3);
-    animation: 2s infinite ease-in-out gear;
+    
     transition: 1s;
   }
 
@@ -392,47 +395,63 @@
     opacity: 0.5;
   }
 
-  @keyframes sonar {
-    0%, 30% {
-      outline: solid 0px #ebcb8b99;
+    /*-------------------------*/
+   /*    PROFILE SETTINGS     */
+  /*-------------------------*/
+
+  .account-settings::before {
+    content: none;
+  }
+
+  span.title {
+    font-family: "Nunito";
+    font-weight: bolder;
+    text-align: center;
+    font-size: 32px;
+    flex-basis: 100%;
+  }
+
+  #first-n, #last-n {
+    width: 50%;
+    flex: 1 1 0;
+    text-align: center;
+  }
+
+    /*-------------------------*/
+   /*       ANIMATIONS        */
+  /*-------------------------*/
+
+  @keyframes bg-slide {
+    from {
+      background-position-y: 0px;
     }
 
-    100% {
-      outline: solid 24px #ebcb8b00;
+    to {
+      background-position-y: -64px;
     }
   }
 
+  @keyframes sonar {
+    0%, 30% { outline: solid 0px #ebcb8b99; }
+    100% { outline: solid 24px #ebcb8b00; }
+  }
+
   @keyframes gear {
-    0% {
-      color: var(--nord3);
-      transform: rotate(270deg);
-    }
+    0% { transform: rotate(270deg); opacity: 1; }
     10% { transform: rotate(260deg); }
     20% { transform: rotate(245deg); }
     30% { transform: rotate(225deg); }
     40% { transform: rotate(180deg); }
-    50% {
-      color: var(--nord4);
-      transform: rotate(135deg);
-    }
+    50% { transform: rotate(135deg); opacity: 0.4; }
     60% { transform: rotate(90deg); }
     70% { transform: rotate(45deg); }
     80% { transform: rotate(25deg); }
     90% { transform: rotate(10deg); }
-    100% {
-      color: var(--nord3);
-      transform: rotate(0deg);
-    }
+    100% { transform: rotate(0deg); opacity: 1; }
   }
 
-  @keyframes spin {
-    0% {
-      color: var(--nord4);
-      transform: rotate(0deg);
-    }
-    100% {
-      color: var(--nord4);
-      transform: rotate(-90deg);
-    }
+  @keyframes tick {
+    0% { transform: rotate(0deg); }
+    80%, 100% { transform: rotate(-45deg); }
   }
 </style>

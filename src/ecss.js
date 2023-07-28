@@ -21,5 +21,3 @@ function compileCSS() {
   }
   style.innerHTML = s;
 }
-
-window["eCSS"] = editCSS;

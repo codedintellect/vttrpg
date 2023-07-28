@@ -34,7 +34,7 @@
     background: var(--nord1);
     width: 100%;
     height: calc(100% - (var(--indent-depth) + var(--gap)) / 2 + 1px);
-    /* +1px to correct for decimal rounding */
+    /* +1px to correct for decimal rounding                    --^  */
     border-right: solid var(--bwidth) var(--nord2);
   }
 
@@ -79,7 +79,7 @@
     box-shadow: 0px 0px 0px 100px var(--nord1);
     
     --x-crop: calc(50% + var(--indent-radius) * sin(var(--indent-angle)));
-    clip-path: inset(var(---bwidth) var(--x-crop) var(---bwidth) -100px);
+    clip-path: inset(var(--bwidth-) var(--x-crop) var(--bwidth-) -100px);
   }
 
   .indent-right {

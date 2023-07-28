@@ -11,7 +11,15 @@ function includeHTML() {
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 200) {
+            elmnt.innerHTML = this.responseText;
+            for (let script of elmnt.getElementsByTagName("script")) {
+              let clone = document.createElement('script');
+              clone.src = script.src;
+              script.parentNode.insertBefore(clone, script);
+              script.remove();
+            }
+          }
           if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
           /* Remove the attribute, and call this function once more: */
           elmnt.removeAttribute("include-html");

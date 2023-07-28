@@ -4,7 +4,10 @@ async function getLocalUser() {
   const { data: { user } } = await s.auth.getUser();
   console.log(user);
   if (user) {
-    window["eCSS"](".avatar", "background-image", `url(${user["user_metadata"]["avatar_url"]})`);
+    editCSS(".avatar", "background-image", `url(${user["user_metadata"]["avatar_url"]})`);
+    document.querySelector("body").innerHTML.replaceAll("%username%", user["user_metadata"]["full_name"]);
+    console.log(document.querySelector("body").innerHTML);
+    console.log(document.querySelector("body").innerHTML.indexOf("%username%"))
     document.querySelector('.user').classList.remove("hidden");
   } else {
     document.querySelector('.reg').classList.remove("hidden");
@@ -32,6 +35,7 @@ async function oAuthSignIn(service) {
 
 async function signOut() {
   const { error } = await s.auth.signOut();
+  window.location.reload();
 }
 
 getLocalUser();
