@@ -1,3 +1,6 @@
+<div class="friend-activities">
+
+</div>
 <div class="social-center">
   <div class="social-center-popup notification-center">
     <div class="notif">
@@ -65,13 +68,32 @@
     width: 320px;
     right: 0;
 
+    display: flex;
+    flex-direction: column;
+
     background-color: var(--nord1);
 
     border-left: var(--bwidth) solid var(--nord2);
   }
 
-  .social-center {
+  .friend-activities {
+    position: relative;
+    background-color: var(--nord11);
+    flex: 1;
+  }
+
+  .friend-activities::after {
+    content: '';
     position: absolute;
+    height: 16px;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(#0000, var(--nord1));
+    flex: 1;
+  }
+
+  .social-center {
+    position: relative;
     margin: 10px;
     bottom: 0;
     left: 0;
