@@ -5,6 +5,7 @@ var profile = null;
 async function getLocalUser() {
   const { data: { user } } = await s.auth.getUser();
   if (user) {
+    console.log(user)
     profile = new User(user.id);
     editCSS(".avatar", "background-image", `url(${user["user_metadata"]["avatar_url"]})`);
     profile.username = await getUsername(profile.uuid);
@@ -20,7 +21,7 @@ async function getLocalUser() {
 
 async function getUsername(id = profile.uuid) {
   const { data, error } = await s
-    .from('usernames')
+    .from('users')
     .select("username")
     .eq('id', id);
   return data[0]["username"];
@@ -28,7 +29,7 @@ async function getUsername(id = profile.uuid) {
 
 async function checkUsername(username) {
   const { data, error } = await s
-    .from('usernames')
+    .from('users')
     .select("username")
     .eq('username', username)
     .neq('id', profile.uuid);
@@ -56,6 +57,18 @@ async function signOut() {
 }
 
 getLocalUser();
+
+async function saveProfile(displayName, username) {
+  const { data, error } = await s
+  .from('users')
+  .update({
+    'display_name':  displayName,
+    'username': username
+  })
+  .eq('id', profile.uuid)
+  .select();
+  getLocalUser();
+}
 
 function User(uuid) {
   this.uuid = uuid;
