@@ -18,7 +18,7 @@ async function getLocalUser() {
   return user;
 }
 
-async function getUsername(id = uuid) {
+async function getUsername(id = profile.uuid) {
   const { data, error } = await s
     .from('usernames')
     .select("username")
@@ -31,7 +31,7 @@ async function checkUsername(username) {
     .from('usernames')
     .select("username")
     .eq('username', username)
-    .neq('id', uuid);
+    .neq('id', profile.uuid);
   return data.length == 0;
 }
 

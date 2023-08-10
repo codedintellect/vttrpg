@@ -24,6 +24,10 @@ username_field.addEventListener("keyup", event => {
 
 username_field.addEventListener("input", async event => {
   let new_username = event.target.value;
+  if (new_username == profile.username) {
+    event.target.style["border-color"] = "var(--nord3)";
+    return;
+  }
   if (new_username.length < 4 || new_username.length > 16) {
     event.target.style["border-color"] = "var(--nord11)";
     return;
